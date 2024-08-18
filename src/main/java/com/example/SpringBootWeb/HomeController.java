@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 public class HomeController {
@@ -49,14 +50,30 @@ public class HomeController {
 
 
     //if we just need to pass the object between the pagges we need to use the model object
+//    @RequestMapping("add")
+//    public String add(@RequestParam("num1") int num, int num2, Model model){
+//        // it will not work with the diffrent name that of the variable actually given
+//        int result= num+num2+10;
+//        // we have to send the added data to the result page we need to send it
+//        //to maintain the data between multiple pages is thorgh session
+//        model.addAttribute("result",result);
+//        System.out.println(num+num2);
+//        return "result";
+//    }
+
+
+
+    //what if we ca put the model and view inside the model object it self
     @RequestMapping("add")
-    public String add(@RequestParam("num1") int num, int num2, Model model){
+    public ModelAndView add(@RequestParam("num1") int num, int num2, ModelAndView mv){
         // it will not work with the diffrent name that of the variable actually given
         int result= num+num2+10;
         // we have to send the added data to the result page we need to send it
         //to maintain the data between multiple pages is thorgh session
-        model.addAttribute("result",result);
+        mv.addObject("result",result);
+        mv.setViewName("result");
         System.out.println(num+num2);
-        return "result";
+        return mv;
     }
+
 }
