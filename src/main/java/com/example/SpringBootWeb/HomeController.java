@@ -1,6 +1,7 @@
 package com.example.SpringBootWeb;
 
 import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpSession;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -18,10 +19,13 @@ public class HomeController {
 
     //the data is beeing sent as a query param so we need to accept the servlet
     @RequestMapping("add")
-    public String add(HttpServletRequest req){
+    public String add(HttpServletRequest req, HttpSession session){
         int num1 = Integer.parseInt(req.getParameter("num1"));
         int num2 = Integer.parseInt(req.getParameter("num2"));
-        int res= num1+num2;
+        int result= num1+num2;
+        // we have to send the added data to the result page we need to send it
+        //to maintain the data between multiple pages is thorgh session
+        session.setAttribute("result",result);
         System.out.println(num1+num2);
         return "result.jsp";
     }
