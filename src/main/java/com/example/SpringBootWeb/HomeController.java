@@ -76,4 +76,16 @@ public class HomeController {
         return mv;
     }
 
+
+
+    @RequestMapping("addAlien")
+    public ModelAndView addAlien(@RequestParam("aid") int aid, String aname, ModelAndView mv){
+        Alien a = new Alien();
+        a.setAid(aid);
+        a.setName(aname);
+        mv.addObject("alien",a);
+        mv.setViewName("result");
+        return mv;
+    }
+
 }
