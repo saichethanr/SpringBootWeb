@@ -47,6 +47,8 @@ public class HomeController {
 //        return "result.jsp";
 //    }
 
+
+    //if we just need to pass the object between the pagges we need to use the model object
     @RequestMapping("add")
     public String add(@RequestParam("num1") int num, int num2, Model model){
         // it will not work with the diffrent name that of the variable actually given
