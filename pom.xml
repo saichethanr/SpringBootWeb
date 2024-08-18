@@ -35,6 +35,15 @@
 			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
 
+
+<!--		it is use to convert the jsp files into a servlet-->
+		<dependency>
+			<groupId>org.apache.tomcat</groupId>
+			<artifactId>tomcat-jasper</artifactId>
+			<version>10.1.26</version>
+		</dependency>
+
+
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
