@@ -5,6 +5,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
@@ -78,14 +79,34 @@ public class HomeController {
 
 
 
+//    @RequestMapping("addAlien")
+//    public ModelAndView addAlien(@RequestParam("aid") int aid, String aname, ModelAndView mv){
+//        Alien a = new Alien();
+//        a.setAid(aid);
+//        a.setName(aname);
+//        mv.addObject("alien",a);
+//        mv.setViewName("result");
+//        return mv;
+//    }
+
+    //i want the spring to create the object and asign the values to this alien object
+    //for the we need to use a annotatio called model atribute
+    //we can specify the name
+//    @RequestMapping("addAlien")
+//    public String  addAlien(@ModelAttribute("alien1") Alien alien){
+//        return "result";
+//    }
+
+//even wityhout the model attribute annotation it works
+    //if we dont want to have a diffrent name we can commpletely skip model atributte
     @RequestMapping("addAlien")
-    public ModelAndView addAlien(@RequestParam("aid") int aid, String aname, ModelAndView mv){
-        Alien a = new Alien();
-        a.setAid(aid);
-        a.setName(aname);
-        mv.addObject("alien",a);
-        mv.setViewName("result");
-        return mv;
+    public String  addAlien(Alien alien){
+        return "result";
     }
 
+
+    @ModelAttribute("cource")
+    public String courceName(){
+        return "Java";
+    }
 }
